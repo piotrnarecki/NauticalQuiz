@@ -13,7 +13,7 @@ class ResultActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_result)
 
-    
+
         val username = intent.getStringExtra(Constans.USER_NAME)
         tv_name.text = username
 
@@ -23,6 +23,8 @@ class ResultActivity : AppCompatActivity() {
 
 
         tv_score.text = "Your score is $correctAnswer of $totalQuestions"
+
+        btn_finish.text = "FINISH"
 
         btn_finish.setOnClickListener()
         {

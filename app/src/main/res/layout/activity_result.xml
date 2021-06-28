@@ -21,12 +21,12 @@
         android:textStyle="bold" />
 
 
-    <ImageView
-        android:id="@+id/iv_trophy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="image"
-        android:src="@drawable/ic_trophy" />
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_trophy"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:contentDescription="image"-->
+<!--        android:src="@drawable/ic_trophy" />-->
 
     <TextView
         android:id="@+id/tv_congratulations"
