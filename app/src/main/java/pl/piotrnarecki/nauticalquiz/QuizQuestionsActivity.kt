@@ -19,9 +19,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mSelectedOptionPosition: Int = 0
 
-    /**
-     * This function is auto created by Android when the Activity Class is created.
-     */
+    private var mCorrectAnswers: Int = 0;
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         //This call the parent constructor
         super.onCreate(savedInstanceState)
@@ -96,6 +96,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     // This is to check if the answer is wrong
                     if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    } else {
+
+                        mCorrectAnswers++
+
                     }
 
                     // This is for correct answer
