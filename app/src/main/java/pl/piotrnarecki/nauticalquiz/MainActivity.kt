@@ -37,7 +37,11 @@ class MainActivity : AppCompatActivity() {
             } else {
 
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
+                intent.putExtra(Constans.USER_NAME, et_name.text.toString())
                 startActivity(intent)
+
+
+
                 finish()
 
             }

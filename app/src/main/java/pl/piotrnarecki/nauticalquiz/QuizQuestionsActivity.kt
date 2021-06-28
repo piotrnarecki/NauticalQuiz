@@ -1,5 +1,6 @@
 package pl.piotrnarecki.nauticalquiz
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,10 @@ import kotlinx.android.synthetic.main.activity_quiz_questions.*
 import pl.piotrnarecki.nauticalquiz.Constans
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
+
+
+    private var mUserName: String? = null
+
 
     private var mCurrentPosition: Int = 1 // Default and the first question position
     private var mQuestionsList: ArrayList<Question>? = null
@@ -28,6 +33,11 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         // This is used to align the xml view to this class
         setContentView(R.layout.activity_quiz_questions)
 
+
+        mUserName = intent.getStringExtra(Constans.USER_NAME)
+
+
+
         mQuestionsList = Constans.getQuestions()
 
         setQuestion()
@@ -37,10 +47,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         tv_option_three.setOnClickListener(this)
         tv_option_four.setOnClickListener(this)
 
-        // TODO(STEP 1: Adding a click event for submit button.)
-        // START
+
         btn_submit.setOnClickListener(this)
-        // END
+
     }
 
     override fun onClick(v: View?) {
@@ -83,11 +92,15 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         }
                         else -> {
 
-                            Toast.makeText(
-                                this@QuizQuestionsActivity,
-                                "You have successfully completed the quiz.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constans.USER_NAME, mUserName)
+                            intent.putExtra(Constans.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constans.TOTAL_QUESTIONS, mQuestionsList!!.size)
+
+                            startActivity(intent)
+                            finish()
+
+
                         }
                     }
                 } else {
@@ -107,6 +120,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                     if (mCurrentPosition == mQuestionsList!!.size) {
                         btn_submit.text = "FINISH"
+
+
                     } else {
                         btn_submit.text = "GO TO NEXT QUESTION"
                     }
